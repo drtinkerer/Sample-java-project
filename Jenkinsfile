@@ -4,7 +4,7 @@ pipeline {
         stage('Building our image') {
             steps {
                 script {
-                    dockerImage = docker.build "drtinkerer/maventest:$BUILD_NUMBER"
+                    dockerImage = docker.build "aaditya7789/maventest:$BUILD_NUMBER"
                 }
             }
         }
@@ -17,13 +17,13 @@ pipeline {
                     }
                 }
             }
-         stage('Notify Slack') {
+        }
+        stage('Notify Slack') {
             steps {
                 script {
                     slackSend tokenCredentialId: 'slack-token'
                 }
-            }    
+            }   
         }
     }
-}
 }
