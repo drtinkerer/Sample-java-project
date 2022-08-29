@@ -18,12 +18,13 @@ pipeline {
                 }
             }
         }
-        stage('Notify Slack') {
-            steps {
-                script {
-                    slackSend tokenCredentialId: 'slack-token'
-                }
-            }   
-        }
     }
+    
+     post {
+         steps {
+             script {
+                 slackSend tokenCredentialId: 'slack-token'
+             }
+         }  
+     }
 }
