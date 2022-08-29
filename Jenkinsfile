@@ -17,6 +17,12 @@ pipeline {
                     }
                 }
             }
+         stage('Notify Slack') {
+            steps {
+                script {
+                    slackSend tokenCredentialId: 'slack-token'
+                }
+            }    
         }
     }
 }
