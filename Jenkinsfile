@@ -23,7 +23,7 @@ pipeline {
      post {
          always {
              script {
-                 slackSend channel: 'bhushan-personal-testing', message: 'slackSend "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"', teamDomain: 'cldcvr', tokenCredentialId: 'slack-token'
+                 slackSend channel: 'bhushan-personal-testing', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", teamDomain: 'cldcvr', tokenCredentialId: 'slack-token'
              }
          }  
      }
