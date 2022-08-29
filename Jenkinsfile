@@ -21,7 +21,7 @@ pipeline {
     }
     
      post {
-         steps {
+         always {
              script {
                  slackSend tokenCredentialId: 'slack-token'
              }
