@@ -21,6 +21,15 @@ pipeline {
     }
     
      post {
+
+          always {
+             script {
+                 slackSend channel: 'bhushan-personal-testing', 
+                           teamDomain: 'cldcvr',
+                           message: "Jenkins pipeline Job `${env.JOB_NAME}` started !",
+                           tokenCredentialId: 'jenkins-ci-slack-token'
+             }
+         }  
          success {
              script {
                  slackSend channel: 'bhushan-personal-testing', 
@@ -30,6 +39,7 @@ pipeline {
                            tokenCredentialId: 'jenkins-ci-slack-token'
              }
          }  
+
          failure {
              script {
                  slackSend channel: 'bhushan-personal-testing', 
