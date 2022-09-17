@@ -26,7 +26,9 @@ pipeline {
                  slackSend channel: 'bhushan-personal-testing', 
                            color : 'good',
                            teamDomain: 'cldcvr',
-                           message: "Job Name : ${env.JOB_NAME} \n Build Number : ${env.BUILD_NUMBER} \n Build Result : ${currentBuild.result} \n (<${env.BUILD_URL}|View on Jenkins GUI>)",
+                           message: "Job Name : ${env.JOB_NAME} \n 
+                                     Build Number : ${env.BUILD_NUMBER} \n 
+                                     Build Result : ${currentBuild.result} \n (<${env.BUILD_URL}|View on Jenkins GUI>)",
                            tokenCredentialId: 'jenkins-ci-slack-token'
              }
          }  
