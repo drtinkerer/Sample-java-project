@@ -21,7 +21,7 @@ pipeline {
     }
     
      post {
-         always {
+         success {
              script {
                  slackSend channel: 'bhushan-personal-testing', 
                            color : 'good',
