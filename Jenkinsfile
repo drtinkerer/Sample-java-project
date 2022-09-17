@@ -4,7 +4,7 @@ pipeline {
         stage('Building our image') {
             steps {
                 script {
-                    dockerImage = docker.jbuild "drtinkerer/maventest:$BUILD_NUMBER"
+                    dockerImage = docker.build "drtinkerer/maventest:$BUILD_NUMBER"
                 }
             }
         }
