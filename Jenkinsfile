@@ -30,5 +30,14 @@ pipeline {
                            tokenCredentialId: 'jenkins-ci-slack-token'
              }
          }  
+         failure {
+             script {
+                 slackSend channel: 'bhushan-personal-testing', 
+                           color : 'danger',
+                           teamDomain: 'cldcvr',
+                           message: "Job Name : ${env.JOB_NAME} \n Build Number : ${env.BUILD_NUMBER} \n Build Result : ${currentBuild.result} \n Build Duration : ${currentBuild.durationString} \n (<${env.BUILD_URL}|View on Jenkins GUI>)",
+                           tokenCredentialId: 'jenkins-ci-slack-token'
+             }
+         }  
      }
 }
