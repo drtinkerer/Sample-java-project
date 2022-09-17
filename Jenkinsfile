@@ -26,7 +26,7 @@ pipeline {
                  slackSend channel: 'bhushan-personal-testing', 
                            color : 'good',
                            teamDomain: 'cldcvr',
-                           message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) \n ${env.BRANCH_NAME}",
+                           message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) \n ${currentBuild.result}",
                            tokenCredentialId: 'jenkins-ci-slack-token'
              }
          }  
