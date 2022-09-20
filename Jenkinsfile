@@ -4,7 +4,7 @@ pipeline {
         stage('Building our image') {
             steps {
                 script {
-                    dockerImage = docker.build "drtinkerer/maventest:$BUILD_NUMBER"
+                    dockerImage = sdocker.build "drtinkerer/maventest:$BUILD_NUMBER"
                 }
             }
         }
