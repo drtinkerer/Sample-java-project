@@ -3,7 +3,7 @@ name: Sample java project
 on:
   push:
     branches:
-      - 'github-actions-slack-voxmedia'
+      - 'github-actions-slack'
 
 jobs:
 
