@@ -29,5 +29,5 @@ jobs:
         uses: act10ns/slack@v1
         with:
           status: ${{ job.status }}
-          config: .github/config/slack.yml
+          config: .github/config/slack.yaml
         if: always()
