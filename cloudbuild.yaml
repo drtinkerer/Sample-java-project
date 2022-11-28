@@ -9,7 +9,7 @@ steps:
     secretEnv: ["REPOSITORY"]
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: "bash"
-    args: ["-c", "docker push $$REPOSITORY/$BUILD_ID"]
+    args: ["-c", "docker push $$REPOSITORY:$BUILD_ID"]
     secretEnv: ["REPOSITORY"]
 availableSecrets:
   secretManager:
