@@ -13,7 +13,7 @@ availableSecrets:
       env: "PASSWORD"
     - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_USER/versions/1
       env: "USERNAME"
-    - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_USER/versions/1
+    - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_NAME/versions/1
       env: "REPOSITORY"
 
 options:
