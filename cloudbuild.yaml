@@ -5,11 +5,11 @@ steps:
     secretEnv: ["USERNAME", "PASSWORD"]
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: "bash"
-    args: ["-c", "docker build . -t $$REPOSITORY:$BUILD_ID"]
+    args: ["-c", "docker build . -t $$REPOSITORY:$SHORT_SHA"]
     secretEnv: ["REPOSITORY"]
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: "bash"
-    args: ["-c", "docker push $$REPOSITORY:$BUILD_ID"]
+    args: ["-c", "docker push $$REPOSITORY:$SHORT_SHA"]
     secretEnv: ["REPOSITORY"]
 availableSecrets:
   secretManager:
