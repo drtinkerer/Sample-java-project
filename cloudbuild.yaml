@@ -11,13 +11,35 @@ steps:
     entrypoint: "bash"
     args: ["-c", "docker push $$REPOSITORY:$SHORT_SHA"]
     secretEnv: ["REPOSITORY"]
+
+  - name: 'gcr.io/cloud-builders/gke-deploy'
+    id: 'Prepare deploy'
+    args:
+    - 'prepare'
+    - '--filename=$_K8S_YAML_PATH'
+    - '--image=$_IMAGE_NAME:$_IMAGE_VERSION'
+    - '--app=$_K8S_APP_NAME'
+    - '--version=$_IMAGE_VERSION'
+    - '--namespace=$_K8S_NAMESPACE'
+    - '--output=output'
+    - '--annotation=gcb-build-id=$BUILD_ID'
+  - name: 'gcr.io/cloud-builders/gke-deploy'
+    id: 'Apply deploy'
+    args:
+    - 'apply'
+    - '--filename=$_OUTPUT_BUCKET_PATH/expanded/*'
+    - '--namespace=$_K8S_NAMESPACE'
+    - '--cluster=$_GKE_CLUSTER'
+    - '--location=$_GKE_LOCATION'
+  images:
+  - '$_IMAGE_NAME:$_IMAGE_VERSION'
 availableSecrets:
   secretManager:
-    - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_PASSWORD/versions/1
+    - versionName: projects/$PROJECT_ID/secrets/DOCKERHUB_REGISTRY_PASSWORD/versions/1
       env: "PASSWORD"
-    - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_USER/versions/1
+    - versionName: projects/$PROJECT_ID/secrets/DOCKERHUB_REGISTRY_USER/versions/1
       env: "USERNAME"
-    - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_NAME/versions/1
+    - versionName: projects/$PROJECT_ID/secrets/DOCKERHUB_REGISTRY_NAME/versions/1
       env: "REPOSITORY"
 
 options:
