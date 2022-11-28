@@ -6,15 +6,9 @@ steps:
    entrypoint: 'bash'
    args: ['-c', 'docker login --username=$$USERNAME --password=$$PASSWORD']
    secretEnv: ['USERNAME', 'PASSWORD']
-   # - name: "gcr.io/cloud-builders/docker"
-   #   entrypoint: 'bash'
-   #   args: ['-c', 'docker push $$REPOSITORY:TAG']
-   #   secretEnv: 'REPOSITORY'
  availableSecrets:
    secretManager:
    - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_PASSWORD/versions/1
      env: 'PASSWORD'
    - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_USER/versions/1
      env: 'USERNAME'
-   - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_NAME/versions/1
-     env: 'REPOSITORY'
