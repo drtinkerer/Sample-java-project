@@ -35,7 +35,7 @@ options:
 
 substitutions:
   _DOCKERFILE_PATH: Dockerfile
-  _REPOSITORY: drtikerer/maventest
+  _REPOSITORY: drtinkerer/maventest
   _GKE_CLUSTER: autopilot-cluster-1
   _GKE_LOCATION: asia-south1
   _K8S_YAML_PATH: deployment.yaml
