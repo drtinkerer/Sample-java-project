@@ -6,9 +6,9 @@ steps:
    entrypoint: 'bash'
    args: ['-c', 'docker login --username=$$USERNAME --password=$$PASSWORD']
    secretEnv: ['USERNAME', 'PASSWORD']
- - name: "gcr.io/cloud-builders/docker"
-   entrypoint: 'bash'
-   args: ['-c', 'docker run $$REPOSITORY:TAG']
+   # - name: "gcr.io/cloud-builders/docker"
+   #   entrypoint: 'bash'
+   #   args: ['-c', 'docker push $$REPOSITORY:TAG']
    #secretEnv: 'REPOSITORY'
  availableSecrets:
    secretManager:
