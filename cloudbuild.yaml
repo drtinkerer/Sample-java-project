@@ -5,12 +5,13 @@
    secretEnv: ['USERNAME', 'PASSWORD']
  - name: "gcr.io/cloud-builders/docker"
    entrypoint: 'bash'
-   args: ['-c', 'docker run $$USERNAME/REPOSITORY:TAG']
-   secretEnv: ['USERNAME']
+   args: ['-c', 'docker run $$REPOSITORY:TAG']
+   secretEnv: ['REPOSITORY']
  availableSecrets:
    secretManager:
-   - versionName: projects/PROJECR_ID/secrets/DOCKER_PASSWORD_SECRET_NAME/versions/DOCKER_PASSWORD_SECRET_VERSION
+   - versionName: projects/PROJECT_ID/secrets/DOCKERHUB_REGISTRY_PASSWORD/versions/1
      env: 'PASSWORD'
-   - versionName: projects/PROJECT_ID/secrets/DOCKER_USERNAME_SECRET_NAME/versions/DOCKER_USERNAME_SECRET_VERSION
+   - versionName: projects/PROJECT_ID/secrets/DOCKERHUB_REGISTRY_USER/versions/1
      env: 'USERNAME'
-
+   - versionName: projects/PROJECT_ID/secrets/DOCKERHUB_REGISTRY_NAME/versions/1
+     env: 'REPOSITORY'
