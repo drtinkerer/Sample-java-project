@@ -1,6 +1,3 @@
-options:
-  logging: CLOUD_LOGGING_ONLY
-
 steps:
  - name: 'gcr.io/cloud-builders/docker'
    entrypoint: 'bash'
@@ -12,3 +9,8 @@ steps:
      env: 'PASSWORD'
    - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_USER/versions/1
      env: 'USERNAME'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+
