@@ -15,6 +15,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args: ["-c", "sed -i 's+$$REPOSITORY.*+$_REPOSITORY:$SHORT_SHA+g' $_K8S_YAML_PATH"]
+    secretEnv: ["REPOSITORY"]
 
   - name: 'gcr.io/cloud-builders/gke-deploy'
     id: 'Apply deploy'
