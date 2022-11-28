@@ -12,6 +12,11 @@ steps:
     args: ["-c", "docker push $$REPOSITORY:$SHORT_SHA"]
     secretEnv: ["REPOSITORY"]
 
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    sed -i '' 's+drtinkerer.*+drtinkerer/maventest:1+g' deployment.yaml
+    args: ['-c', 'sed', -i', 's/+$$REPOSITORY.*+$$REPOSITORY:$SHORT_SHA+g', 'deployment.yaml']
+
   - name: 'gcr.io/cloud-builders/gke-deploy'
     id: 'Apply deploy'
     args:

@@ -15,5 +15,5 @@ spec:
         app: test
     spec:
       containers:
-      - image: drtinkerer/maventest:9410d803
+      - image: drtinkerer/maventest:1
         name: maventest
