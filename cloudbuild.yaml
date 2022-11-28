@@ -5,17 +5,14 @@ steps:
     secretEnv: ["USERNAME", "PASSWORD"]
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: "bash"
-    args: ["-c", "docker build . -t $$REPOSITORY:$SHORT_SHA"]
-    secretEnv: ["REPOSITORY"]
+    args: ["-c", "docker build . -t $_REPOSITORY:$SHORT_SHA"]
   - name: "gcr.io/cloud-builders/docker"
     entrypoint: "bash"
-    args: ["-c", "docker push $$REPOSITORY:$SHORT_SHA"]
-    secretEnv: ["REPOSITORY"]
+    args: ["-c", "docker push $_REPOSITORY:$SHORT_SHA"]
 
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
-    args: ["-c", "sed -i 's+$$REPOSITORY.*+$_REPOSITORY:$SHORT_SHA+g' $_K8S_YAML_PATH"]
-    secretEnv: ["REPOSITORY"]
+    args: ["-c", "sed -i 's+$_REPOSITORY.*+$_REPOSITORY:$SHORT_SHA+g' $_K8S_YAML_PATH"]
 
   - name: 'gcr.io/cloud-builders/gke-deploy'
     id: 'Apply deploy'
