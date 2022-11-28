@@ -7,6 +7,10 @@ steps:
     entrypoint: "bash"
     args: ["-c", "docker build . -t $$REPOSITORY/$BUILD_ID"]
     secretEnv: ["REPOSITORY"]
+  - name: "gcr.io/cloud-builders/docker"
+    entrypoint: "bash"
+    args: ["-c", "docker push $$REPOSITORY/$BUILD_ID"]
+    secretEnv: ["REPOSITORY"]
 availableSecrets:
   secretManager:
     - versionName: projects/${_PROJECT_ID}/secrets/DOCKERHUB_REGISTRY_PASSWORD/versions/1
