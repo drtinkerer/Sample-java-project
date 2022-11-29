@@ -16,4 +16,4 @@ COPY --from=builder target/maventest-1.0-SNAPSHOT.jar maventest-1.0-SNAPSHOT.jar
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "meventest-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "maventest-1.0-SNAPSHOT.jar"]
