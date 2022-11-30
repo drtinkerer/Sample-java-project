@@ -14,14 +14,14 @@ steps:
     entrypoint: 'bash'
     args: ["-c", "sed -i 's+$_REPOSITORY.*+$_REPOSITORY:$SHORT_SHA+g' $_K8S_YAML_PATH"]
 
-  - name: 'gcr.io/cloud-builders/gke-deploy'
-    id: 'Apply deploy'
-    args:
-    - 'run'
-    - '--filename=$_K8S_YAML_PATH'
-    - '--namespace=$_K8S_NAMESPACE'
-    - '--cluster=$_GKE_CLUSTER'
-    - '--location=$_GKE_LOCATION'
+    #  - name: 'gcr.io/cloud-builders/gke-deploy'
+    #    id: 'Apply deploy'
+    #    args:
+    #    - 'run'
+    #    - '--filename=$_K8S_YAML_PATH'
+    #    - '--namespace=$_K8S_NAMESPACE'
+    #    - '--cluster=$_GKE_CLUSTER'
+    #    - '--location=$_GKE_LOCATION'
 availableSecrets:
   secretManager:
     - versionName: projects/$PROJECT_ID/secrets/DOCKERHUB_REGISTRY_PASSWORD/versions/1
