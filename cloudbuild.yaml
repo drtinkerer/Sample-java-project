@@ -41,3 +41,4 @@ substitutions:
   _K8S_YAML_PATH: deployment.yaml
   _K8S_APP_NAME: test
   _K8S_NAMESPACE: test
+
